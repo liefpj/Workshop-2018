@@ -84,6 +84,18 @@ Example:
 ### Workflow 
 Now I'm going to descibe a workflow you can use to get work done. I have found that this is a nice way to collaborate with others on a project and keep track of progress. The basic idea is to make github issues for each modification to the repo and then make a git branch for each issue. Then, when you are done with your changes and you are ready to merge them with the master branch, you start a pull request that will merge those changes in.
 
+### Exercise:
+1. Make a github issue on your fork for the next rosalind problem
+2. Make a branch for the next rosalind probem using `git branch <name of branch>` (I recommend using the issue name in the branch name (i.e. issue-2/solve-rosalind-2)
+3. Now make your changes to the rosalind directory to solve the second rosalind problem
+4. Check your solution using the rosalind website
+5. Add, commit, and push your changes to the branch (i.e. `git push issue-2/solve-rosalind-2`)
+6. Go to your forked repo on github. You should see a line that says something like "make a pull request for recent changes?" Click that button
+7. Review the changes you have made and make sure everything looks alright
+8. Go to the bottom of the pull request and click merge code
+9. Now on your computer...checkout the master branch using the command `git checkout master`
+10. Now your github master branch is farther along than your local branch. To bring these changes to your local machine use the git pull command (i.e. `git pull <name of fork> master) 
+
 Make a branch for each problem and then rebase the problem onto the master branch. Make an issue for each rosalind problem. And then make a pull request for each problem. 
 
 ### Docker
