@@ -33,6 +33,56 @@ Tip:
 It's a good idea to keep your programs DRY (don't repeat yourself?). When you add a function to util.py for example, try to use the same function for other rosalind problems.
 
 ### Git
+We have already used GitHub to download the source code for the workshop. I recommend you use github for all of your programming tasks. This way your code is secure so it will survive even if you spill diet coke on your laptop. It also makes it easy to distribute your code to collaborators as well as show people what you are working on.
+
+That being said, git is not an easy tool to use and should be used with extreme caution. Since it is entirely a command-line utility it is difficult to know exactly what the commands are doing until you have used the tool for some time and have seen all the possible outcomes. 
+
+Let's open up the git bash on windows and the terminal on your mac machines. The first command you should become familiar with is git status.
+
+Execute: 
+git status
+
+This command will list out the branch you are on as well as any changes that you have made to the program. One limitation of github is that you cannot put large files there, so be careful not to add files larger than 10MB to your repo. For example, the cast.csv file is too large for github. So, do not add this file to the repository.
+
+During the course of this workshop, you have made several changes to the notebooks and other files. Use the git diff command to see all of the changes you have made since the last commit was made in this repo.
+
+Once you are happy with the changes you have made, you can add each individual file using the git add command. 
+
+### Exercise:
+Go through all of the files you have modified and add them to the repo. 
+
+Example:
+`git add <path to file>`
+
+Now that we have bundled all of the changes, we can use the git commit command to make an official commit to our repo. It's good practice to make an informative commit message so you know what is in the commit exactly. Say you want to go back to a previous version. You can use these commit messages to remind you where you left off in the last commit.
+
+### Exercise:
+Think of a commit message that describes the work you have done so far.
+
+Example:
+`git commit -m <Your commit message>`
+
+The git log command allows you to see the commits that have been entered for a branch.
+
+### Exercise:
+Check that your commit was logged successfully by executing the `git log` command
+
+You have been working in my copy of the workshop code, but you will want to save your personal changes ot your own github repo. To do this you will need to make a fork of my Workshop-2018 repo and then add your fork as a remote repo.
+
+### Exercise:
+1. Go to the Workshop-2018 repo and click the fork button in the top right side of the page
+2. Use the `git remote add <name for fork> <url for your forked repo>`
+
+When you are ready to "save" your changes on github, use the `git push` command to push your changes to the github website. This will save your changes on the master branch.
+
+### Exercise:
+Push your changes to your forked repository. 
+
+Example:
+`git push <name for fork>` 
+
+### Workflow 
+Now I'm going to descibe a workflow you can use to get work done. I have found that this is a nice way to collaborate with others on a project and keep track of progress. The basic idea is to make github issues for each modification to the repo and then make a git branch for each issue. Then, when you are done with your changes and you are ready to merge them with the master branch, you start a pull request that will merge those changes in.
 
 Make a branch for each problem and then rebase the problem onto the master branch. Make an issue for each rosalind problem. And then make a pull request for each problem. 
 
