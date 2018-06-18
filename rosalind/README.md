@@ -96,8 +96,44 @@ Now I'm going to descibe a workflow you can use to get work done. I have found t
 9. Now on your computer...checkout the master branch using the command `git checkout master`
 10. Now your github master branch is farther along than your local branch. To bring these changes to your local machine use the git pull command (i.e. `git pull <name of fork> master) 
 
-Make a branch for each problem and then rebase the problem onto the master branch. Make an issue for each rosalind problem. And then make a pull request for each problem. 
+### Exercises:
+Repeat this process again for the next rosalind problem.
+
 
 ### Docker
+One of the issues with distributing software is that an algorithm may behave differently on my computer than on your computer depending on the other libraries you have on your computer. To make life simpler, a lot of smart people developed a tool called Docker. Docker is basically a virtual machine that allows you to ship your code with all of its dependencies. We will learn how to install docker and then we will package your rosalind solving machine in a docker container and then you will have your partner run your code on their machine to show how easy it is to run other people's code when using docker.
 
-Create a docker container for your rosalind solving machine. Push the container to your Dockerhub account. Now use your partner's version of the rosalind solving machine to solve the next problem. Have a version number for each problem it is capable of solving. If you change the way the program functions, make a major version change, and if there is an important bugfix, create a hotfix version.
+#### Windows 
+You will need to make a docker account first
+
+Follow the instructions here: 
+https://store.docker.com/editions/community/docker-ce-desktop-windows 
+
+Open the PowerShell and run `docker version`
+Check that docker is installed correctly by running `docker run hello-world`
+
+#### Mac
+Follow the instructions here:
+https://store.docker.com/editions/community/docker-ce-desktop-mac
+
+Open the a terminal and run `docker version`
+Check that docker is installed correctly by running `docker run hello-world`
+
+### Dockerfile 
+The next thing we need to do is make a Dockerfile that packages up your code and creates a docker container. Think of a Dockerfile as a list of instructions for creating a docker container. They function very similarly to bash commands for installing software. Set your version number to the number of problems you have solved. So, the first version shoulse be 0.1.0. If you change the way the program functions, make a major version change, and if there is an important bugfix, create a hotfix version.
+
+Running a docker container is the most difficult part of this. You have to keep in mind that your docker container is like it's own linux computer running inside your computer. So, your docker container does not behave like your computer. You also have to mount your filesystem because the docker container's filesytem is different than your filesystem. To make this easy, just always run your code in your working directory and always mount your working directory as /data in the docker container. For example,
+
+`docker run -it -v $(pwd):/data/ DockerhubName/rosalind:version -h`
+
+The -it makes it an interative session and also terminates the container at the end. The -v stands for volume and it is this command that maps a directory on your filesystem (your working directory) to the docker container filesystem at /data/. If you stick with this then you should be fine.
+
+#### Exercise:
+1. Fill out the Dockerfile for your version of the rosalind project
+2. Build you container "docker build . -t DockerhubName/rosalind:version"
+3. Run your docker container (see note above)
+4. Now push the container to your dockerhub account "docker push DockerhubName/rosalind:version"
+5. Now pull your partner's docker container and make sure you are getting the same answers to the rosalind problems. "docker pull DockerhubName/rosalind:version"
+
+#### Exercise:
+This is a challenge problem. You and your partner are going to implement the next rosalind problem, but you are not going to submit your own solution. In the time it takes to download the data, you will pull your partner's code from dockerhub, run it on the data, and upload their solution to your account. Your partner will do the same thing, but with your code.
